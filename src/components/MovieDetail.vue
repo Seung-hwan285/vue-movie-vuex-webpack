@@ -1,17 +1,13 @@
 <template>
-  <h1>Hello</h1>
+  <h3>무비 디테일 부분입니다.</h3>
 </template>
 
 <script>
 export default {
-  name: "Hello"
+  name: "MovieDetail"
 }
 </script>
 
 <style scoped>
-
-h1{
-  color: red;
-}
 
 </style>

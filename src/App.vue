@@ -1,40 +1,66 @@
 <template>
-  <h1
-    v-if="msg"
-    class="message"
-    @click="log"
-  >
-    {{ msg }}
-  </h1>
-  <Hello />
+
+  <nav class="logo">
+    <router-link to="/">
+      <h1 class="logo-title">
+        <span>뷰 영화</span>
+        <Home />
+      </h1>
+    </router-link>
+  </nav>
+
+
+  <main>
+    <router-view />
+  </main>
 </template>
 
-
 <script>
-import Hello from "~/components/Hello";
+
+import Home from "~/components/Home";
+
 export default {
+  
   components:{
-    Hello
+    Home,
   },
   data(){
     return{
-      msg : 'Hello Vue'
-    }
-  },
-
-  methods:{
-    log(){
 
     }
   }
 }
+
+
+
 </script>
 
-
 <style>
-
-h1{
-  color: blue;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+body{
+  background-color: black;
+}
+a{
+  text-decoration: none;
+}
+
+.logo{
+  display: flex;
+  align-content: center;
+  justify-items: center;
+
+  padding: 10px 16px;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.logo-title{
+  color: #eee;
+}
+
 
 </style>
