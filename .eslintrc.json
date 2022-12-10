@@ -1,0 +1,14 @@
+{
+  "env" : {
+    // 전역 변수들을 eslint로 확인하지 않겠다는 의미 (__dirname.. 등등)
+    "browser": false,
+    "node" : false
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/vue3-recommended"
+  ],
+  "rules": {
+    "vue/multi-word-component-names": "off"
+  }
+}
