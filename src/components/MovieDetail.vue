@@ -10,4 +10,7 @@ export default {
 
 <style scoped>
 
+h3{
+  color: red;
+}
 </style>

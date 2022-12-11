@@ -4,7 +4,6 @@
     <router-link to="/">
       <h1 class="logo-title">
         <span>뷰 영화</span>
-        <Home />
       </h1>
     </router-link>
   </nav>
@@ -17,13 +16,8 @@
 
 <script>
 
-import Home from "~/components/Home";
-
 export default {
-  
-  components:{
-    Home,
-  },
+
   data(){
     return{
 

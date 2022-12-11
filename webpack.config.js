@@ -9,6 +9,11 @@ module.exports={
         path :path.resolve(__dirname,'dist'),
         clean: true
     },
+    // 웹펙 라우터 이동안될때 devServer true 설정해줘야함 (리액트도 이와 동일)
+    devServer: {
+        historyApiFallback: true,
+    },
+
 
     resolve: {
         extensions: [ '.tsx', '.ts', '.js', '.vue' ],
