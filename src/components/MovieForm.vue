@@ -8,6 +8,7 @@
           v-model="textValue"
           type="text"
           placeholder="제목"
+          @input="textValue"
       >
       <input
           v-model="year"

@@ -5,7 +5,7 @@ export default createStore({
         return {
             movieList :[],
             movieListTotal : {},
-            title :'',
+            textValue :'',
         }
     },
 
@@ -16,19 +16,22 @@ export default createStore({
             state.movieList=[...state.movieList,...movies.Search]
             state.movieListTotal=movies;
         },
-        setTitle(state,title){
-            console.log(title);
-            state.title  =title;
+        setTitle(state,textValue){
+            console.log(textValue);
+            state.textValue =textValue;
+            console.log(state.textValue);
         }
     },
 
     getters:{
       getMovie(state){
-          console.log(state.movieList);
           return state.movieList;
       },
       getMovieTotal(state){
           return state.movieListTotal;
+      },
+      getTitle(state){
+          return state.textValue;
       }
     },
 
@@ -41,26 +44,25 @@ export default createStore({
                 const result = await todo.json();
                 // const data =result.Search;
                 console.log(result);
+                context.commit('setTitle',options.textValue);
                 context.commit('setMovieList',result);
             }
         },
-
         async getMovieTitleAndYear(context,options){
             if(options.year){
              const todo= await  fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${options.textValue}&y=${options.year}`);
              const result = await todo.json();
              const data =result.Search;
-             context.commit('setMovieList',data);
+                context.commit('setTitle',options.textValue);
+                context.commit('setMovieList',data);
             }
         },
 
         async getMoviePage(context,options){
-            console.log(options.pageNum);
             if(options.pageNum){
-                const todo = await fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=car&page=${options.pageNum}`);
-                const data=await todo.json();
+                const todo = await fetch(`https://www.omdbapi.com/?apikey=7035c60c&s=${options.textValue}&page=${options.pageNum}`);
+                const data = await todo.json();
                 console.log(data);
-                context.commit('setTitle',options.title);
                 context.commit('setMovieList',data);
             }
         }

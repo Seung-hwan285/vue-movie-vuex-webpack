@@ -47,10 +47,8 @@ export default {
   },
 
   computed:mapGetters({
-    getMovie :'getMovie'
+    getMovie :'getMovie',
   }),
-
-
 
   updated() {
     // eslint-disable-next-line vue/no-mutating-props
