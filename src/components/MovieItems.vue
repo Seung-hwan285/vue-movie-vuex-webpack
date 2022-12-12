@@ -1,7 +1,7 @@
 <template>
     <ul class="movie-list">
       <li
-        v-for="movie in movies"
+        v-for="movie in (pagenum > 1 ? movies2:movies)"
         :key="movie.imdbId"
         class="movie-item"
       >
@@ -27,20 +27,45 @@
         </router-link>
       </li>
     </ul>
+
 </template>
 
 <script>
 
+
+import {mapGetters} from "vuex";
+
 export default {
-  
-  
+
   // eslint-disable-next-line vue/require-prop-types
-  props: ['movies'],
+  props: ['movies','pagenum'],
+  data(){
+    return{
+      // eslint-disable-next-line vue/no-dupe-keys
+      movies2 :[],
+    }
+  },
+
+  computed:mapGetters({
+    getMovie :'getMovie'
+  }),
+
+
+
+  updated() {
+    // eslint-disable-next-line vue/no-mutating-props
+    this.movies2=this.getMovie;
+    console.log(this.movies2);
+  }
 
 }
 </script>
 
 <style scoped>
+h1{
+  color: red;
+}
+
 h3 {
   color: #FFF;
   margin-bottom: 16px;

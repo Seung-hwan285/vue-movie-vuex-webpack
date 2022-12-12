@@ -1,7 +1,14 @@
 <template>
   <div class="home">
     <MovieForm />
-    <MovieItems :movies="getMovies" />
+    <MovieItems
+      :movies="getMovies"
+      :pagenum="pageNum"
+    />
+    <MoviePageList
+      :movies="getMoviesTotal"
+      @onClickPage="onClickPage"
+    />
   </div>
 </template>
 
@@ -10,19 +17,30 @@
 import MovieItems from "~/components/MovieItems";
 import MovieForm from "~/components/MovieForm";
 import {mapGetters} from "vuex";
+import MoviePageList from "~/components/MoviePageList";
 
 export default {
-  components: {MovieForm, MovieItems},
-  
+  components: {MovieForm, MovieItems,MoviePageList},
+
   data(){
     return{
-      movies :[],
+      movieList : [],
+      pageNum :0,
     }
   },
 
   computed :mapGetters({
-    getMovies : 'getMovie'
-  })
+    getMovies : 'getMovie',
+    getMoviesTotal :'getMovieTotal'
+  }),
+
+  methods:{
+    onClickPage(pageNum){
+      console.log(pageNum);
+      this.pageNum = pageNum;
+    }
+  }
+
 }
 
 </script>
